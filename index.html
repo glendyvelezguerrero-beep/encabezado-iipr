@@ -1,66 +1,126 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reportes IIPR</title>
+
 <style>
-  * { box-sizing: border-box; }
-  html, body { margin: 0; width: 100%; height: 100%; }
-  body {
-    color: white;
-    font-family: Arial, sans-serif;
-    background: #06172e;
-  }
-  header {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    gap: clamp(12px, 3vw, 36px);
-    padding: 10px clamp(16px, 4vw, 56px);
-    position: relative;
-    overflow: hidden;
-    background:
-      linear-gradient(110deg, #06172e 25%, transparent),
-      repeating-linear-gradient(135deg,
-        transparent 0 38px, #55cfff12 39px 40px),
-      radial-gradient(ellipse at right, #125785, #06172e 75%);
-    border-bottom: 3px solid #39bdec;
-  }
-  svg {
-    width: clamp(36px, 7vw, 78px);
-    height: 70%;
-    max-height: 90px;
-    flex-shrink: 0;
-  }
-  .texto { min-width: 0; }
-  h1 {
-    margin: 0;
-    font-size: clamp(22px, 4.4vw, 56px);
-    letter-spacing: .045em;
-    line-height: 1.1;
-    text-shadow: 0 2px 8px #0008;
-  }
-  p {
-    margin: 8px 0 0;
-    font-size: clamp(10px, 1.2vw, 14px);
-    letter-spacing: .16em;
-    color: #b9d9ef;
-  }
-  @media (max-height: 85px) {
-    p { display: none; }
-    h1 { font-size: clamp(20px, 4vw, 36px); }
-  }
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #07162e;
+}
+
+.encabezado {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2.5vw, 36px);
+  width: 100%;
+  height: 100%;
+  padding: 8px clamp(16px, 3vw, 44px);
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(ellipse at right, #164d91, transparent 65%),
+    linear-gradient(110deg, #061225, #102e61);
+}
+
+/* Imagen de fondo: conserva sus proporciones */
+.encabezado::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: url("fondo.png") right center / auto 100% no-repeat;
+  opacity: .3;
+}
+
+.encabezado::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg, #061225 5%, #071a35bb 48%, transparent
+  );
+  border-top: 1px solid #ffffff40;
+  border-bottom: 2px solid #b99a51;
+}
+
+/* Escudo: se adapta a la altura sin deformarse */
+.escudo {
+  display: block;
+  height: 90%;
+  max-height: 110px;
+  width: auto;
+  max-width: 18%;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.texto {
+  min-width: 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(22px, 3.5vw, 46px);
+  font-weight: 300;
+  letter-spacing: .09em;
+  line-height: 1.15;
+}
+
+.linea {
+  width: clamp(70px, 15vw, 210px);
+  height: 1px;
+  margin: 9px 0;
+  background: linear-gradient(90deg, #d8ba77, transparent);
+}
+
+p {
+  margin: 0;
+  color: #d4deed;
+  font-size: clamp(9px, 1vw, 13px);
+  font-weight: 400;
+  letter-spacing: .16em;
+  line-height: 1.4;
+}
+
+@media (max-height: 75px) {
+  .linea, p { display: none; }
+  h1 { font-size: clamp(20px, 3vw, 32px); }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 22px; letter-spacing: .04em; }
+  p { font-size: 9px; letter-spacing: .06em; }
+}
 </style>
-<header>
-  <svg viewBox="0 0 80 96" fill="none" aria-hidden="true">
-    <path d="M40 5 73 18v30c0 20-15 34-33 43C22 82 7 68 7 48V18Z"
-          stroke="#dbeaf5" stroke-width="3"/>
-    <path d="m21 48 13 13 26-30"
-          stroke="#42c6ef" stroke-width="5"/>
-  </svg>
+</head>
+
+<body>
+<header class="encabezado">
+  <img
+    class="escudo"
+    src="escudo.png"
+    alt="Dirección General de Investigaciones"
+  >
+
   <div class="texto">
     <h1>REPORTES IIPR</h1>
-    <p>ANÁLISIS Y SEGUIMIENTO DE REPORTES</p>
+    <div class="linea"></div>
+    <p>DIRECCIÓN GENERAL DE INVESTIGACIONES</p>
   </div>
 </header>
+</body>
 </html>
